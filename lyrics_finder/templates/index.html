@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrics Finder</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Simple Lyrics Finder</h1>
+        <form action="/lyrics" method="post">
+            <input type="text" name="artist" placeholder="Artist" required>
+            <input type="text" name="title" placeholder="Song Title" required>
+            <button type="submit">Find Lyrics</button>
+        </form>
+
+        {% if lyrics %}
+        <div class="lyrics-box">
+            <h2>Lyrics for "{{ title }}" by {{ artist }}</h2>
+            <pre>{{ lyrics }}</pre>
+        </div>
+        {% endif %}
+        {% if youtube_embed_url %}
+        <div class="video-container">
+            <iframe width="100%" height="315" src="{{ youtube_embed_url }}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
